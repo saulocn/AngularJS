@@ -22,6 +22,7 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 				.success(function(){
 					console.log("Foto " + $scope.foto.titulo + " atualizada com sucesso!");
 					$scope.mensagem = "Foto " + $scope.foto.titulo + " atualizada com sucesso!";
+					$scope.formulario.$setPristine();
 				})
 				.error(function(error){
 					console.log(error);
@@ -35,6 +36,7 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 					console.log("Foto "+$scope.foto.titulo+" cadastrada com sucesso!");
 					$scope.mensagem = "Foto "+$scope.foto.titulo+" cadastrada com sucesso!";
 					$scope.foto = {};
+					$scope.formulario.$setPristine();
 				})
 				.error(function(error){
 					console.log(error);
