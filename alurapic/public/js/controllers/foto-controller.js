@@ -1,6 +1,8 @@
-angular.module('alurapic').controller('FotoController', function($scope, $http, $routeParams){
+angular.module('alurapic').controller('FotoController', function($scope, $http, $routeParams, recursoFoto){
 	$scope.foto={};
 	$scope.mensagem = '';
+
+	
 
 	if($routeParams.fotoId){
 		$http.get('v1/fotos/'+$routeParams.fotoId)
@@ -18,16 +20,16 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 		console.log($scope.foto);
 		if($scope.formulario.$valid){
 			if($scope.foto._id){
-				$http.put('v1/fotos/'+$scope.foto._id, $scope.foto)
-				.success(function(){
-					console.log("Foto " + $scope.foto.titulo + " atualizada com sucesso!");
-					$scope.mensagem = "Foto " + $scope.foto.titulo + " atualizada com sucesso!";
-					$scope.formulario.$setPristine();
-				})
-				.error(function(error){
-					console.log(error);
-					$scope.mensagem = "Não foi possível atualizar a foto "+$scope.foto.titulo+"!";
-				});
+				recursoFoto.update({fotoId : $scope.foto._id}, $scope.foto,
+					function(){
+						console.log("Foto " + $scope.foto.titulo + " atualizada com sucesso!");
+						$scope.mensagem = "Foto " + $scope.foto.titulo + " atualizada com sucesso!";
+						$scope.formulario.$setPristine();
+					},
+					function(erro){
+						console.log(error);
+						$scope.mensagem = "Não foi possível atualizar a foto "+$scope.foto.titulo+"!";
+					});
 
 			} else {
 				console.log($scope.foto);
