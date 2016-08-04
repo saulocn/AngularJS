@@ -22,9 +22,12 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 			cadastroDeFotos.cadastrar($scope.foto)
 			.then(function(dados){
 				$scope.mensagem = dados.mensagem;
-				if(resultado.inclusao){
+				if(dados.inclusao){
 					$scope.foto = {};
 				}
+				//$scope.focado = true;
+
+
 				$scope.formulario.$setPristine();
 			})
 			.catch(function(erro){

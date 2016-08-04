@@ -53,4 +53,31 @@ angular.module('minhasDiretivas', [])
 	ddo.templateUrl = 'js/directives/meu-botao-perigo.html'
 
 	return ddo;
+})
+.directive('meuFocus', function(){ 
+	var ddo = {};
+
+	ddo.restrict = "A"; 
+
+	/*ddo.scope = {
+		focado:'=', // Se trata de uma String
+	};*/
+
+	ddo.link = function(scope, element){
+		/*scope.$watch('focado', function(){
+			if(scope.focado){
+				// element.focus(); se usasse o jquery antes do AngularJS
+				element[0].focus();
+				//alert("Mudou!");
+				scope.focado = false;
+			}
+		});*/
+
+		scope.$on('fotoCadastrada', function(){
+			element[0].focus();
+		});
+	};
+
+
+	return ddo;
 });
