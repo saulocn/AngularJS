@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotoController', function($scope, $http, $routeParams, cadastroDeFotos, recursoFoto){
+angular.module('alurapic').controller('FotoController',['$scope', '$http', '$routeParams', 'cadastroDeFotos', 'recursoFoto', function($scope, $http, $routeParams, cadastroDeFotos, recursoFoto){
 	$scope.foto={};
 	$scope.mensagem = '';
 
@@ -35,4 +35,4 @@ angular.module('alurapic').controller('FotoController', function($scope, $http, 
 			});
 		}
 	};
-});
+}]);

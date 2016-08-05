@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('GruposController', function($scope, $http){
+angular.module('alurapic').controller('GruposController',['$scope', '$http', function($scope, $http){
 	$scope.grupos = [];
 	$http.get('v1/grupos')
 	.success(function(grupos){
@@ -7,4 +7,4 @@ angular.module('alurapic').controller('GruposController', function($scope, $http
 	.error(function(){
 		console.log("Erro ao pegar os grupos");
 	});
-});
+}]);
